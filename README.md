@@ -2,45 +2,55 @@
 
 A minimal, production-ready URL shortening service built with **FastAPI** and **SQLite**, featuring API documentation, click tracking, and easy deployment.
 
-Long, unwieldy URLs can be a hassle to share, remember, or type. This service streamlines the process by converting lengthy links into short, human-friendly slugs and automatically redirecting users to the original address—while also tracking click counts for simple analytics
+Long, unwieldy URLs can be a hassle to share, remember, or type. This service streamlines the process by converting lengthy links into short, human-friendly slugs and automatically redirecting users to the original address—while also tracking click counts for simple analytics.
+
+---
 
 ## Features
 
-* **Shorten URLs** via a RESTful endpoint
+* **Shorten URLs** via a clean RESTful endpoint
 * **Redirect** shortened slugs to their original URLs
-* **Click tracking**: store and retrieve the number of visits per slug
+* **Click tracking**: store and retrieve visit counts per slug
 * **OpenAPI / Swagger** UI auto-generated at `/docs`
 * **Automatic database migrations** with SQLModel
-* **Lightweight**: single-file SQLite database, no external dependencies
+* **Lightweight**: single-file SQLite database, no external services
+
+---
 
 ## Tech Stack
 
-* **Python**
-* **FastAPI**: high-performance ASGI web framework
-* **SQLModel**: ORM for SQLite based on SQLAlchemy and Pydantic
-* **Uvicorn**: ASGI server for local development
-* **Pytest**, **HTTPX**: testing framework and HTTP client
+* **Python** 3.9+
+* **FastAPI**: high‑performance ASGI web framework
+* **SQLModel**: ORM for SQLite built on SQLAlchemy & Pydantic
+* **Uvicorn**: ASGI server for development
+* **Pytest** & **HTTPX**: testing framework and HTTP client
+
+---
 
 ## Directory Structure
 
-```
-url-shortener-fastapi/
+```plaintext
+URL-Shortener/
 ├── main.py               # FastAPI application and endpoints
 ├── models.py             # URL data model definitions
-├── database.py           # Database connection and migration
-├── requirements.txt      # Project dependencies
-├── .gitignore            # Excluded files (venv, cache, DB file)
-├── urls.db               # SQLite database file (created at runtime)
+├── database.py           # Database setup and connection
+├── requirements.txt      # Python dependencies
+├── .gitignore            # Ignored files and folders
+├── urls.db               # SQLite database (created at runtime)
 ├── tests/                # Automated tests
 │   └── test_api.py       # Test suite for API endpoints
-└── README.md             # Project documentation (this file)
+└── README.md             # Project documentation
 ```
+
+---
 
 ## Prerequisites
 
-* **Python**
+* **Python** 3.9 or higher
 * **pip** package manager
 * (Optional) **virtualenv** or **venv** for isolation
+
+---
 
 ## Installation
 
@@ -54,7 +64,9 @@ url-shortener-fastapi/
 
    ```bash
    python -m venv venv
-   # Windows
+   # Windows PowerShell
+   .\venv\Scripts\Activate.ps1
+   # Windows CMD
    venv\Scripts\activate
    # macOS / Linux
    source venv/bin/activate
@@ -65,16 +77,20 @@ url-shortener-fastapi/
    pip install -r requirements.txt
    ```
 
+---
+
 ## Configuration
 
-By default, the service uses a local SQLite database `urls.db` in the project root. To change the database URL, modify the `DATABASE_URL` constant in **database.py**:
+By default, the service uses a local SQLite database `urls.db` in the project root. To point to another database, edit the `DATABASE_URL` constant in **database.py**:
 
 ```python
 # database.py
 DATABASE_URL = "sqlite:///./urls.db"
-# For PostgreSQL, you could use:
+# For PostgreSQL:
 # DATABASE_URL = "postgresql://user:password@localhost/dbname"
 ```
+
+---
 
 ## Usage
 
@@ -83,54 +99,63 @@ DATABASE_URL = "sqlite:///./urls.db"
    ```bash
    uvicorn main:app --reload
    ```
-2. **Access the interactive API docs**
-
-   * Open your browser at: `http://127.0.0.1:8000/docs`
+2. **Open the API docs**
+   Navigate to `http://127.0.0.1:8000/docs` in your browser
 3. **Shorten a URL**
 
-   ```bash
-   curl -X POST "http://127.0.0.1:8000/shorten?target_url=https://example.com"
-   # Response:
-   # {"short_url": "/Ab3xQ2"}
+   * **Linux/macOS or Windows with real curl**:
+
+     ```bash
+     curl.exe -X POST "http://127.0.0.1:8000/shorten?target_url=https://example.com"
+     ```
+   * **PowerShell**:
+
+     ```powershell
+     Invoke-RestMethod -Method POST "http://127.0.0.1:8000/shorten?target_url=https://example.com"
+     ```
+
+   **Response**:
+
+   ```json
+   { "short_url": "/Ab3xQ2" }
    ```
 4. **Redirect by slug**
-
-   * Navigate to `http://127.0.0.1:8000/Ab3xQ2`
-   * You will be redirected to `https://example.com`
+   Open `http://127.0.0.1:8000/Ab3xQ2` in your browser to be redirected
 5. **Get statistics**
 
    ```bash
    curl http://127.0.0.1:8000/stats/Ab3xQ2
-   # Response:
-   # {"target_url": "https://example.com", "clicks": 1, "created_at": "2025-07-31T17:45:00.123456"}
+   # {"target_url":"https://example.com","clicks":1,"created_at":"2025-07-31T17:45:00"}
    ```
+
+---
 
 ## API Reference
 
-| Method | Path            | Query / Params        | Response                                   |
-| ------ | --------------- | --------------------- | ------------------------------------------ |
-| POST   | `/shorten`      | `target_url` (string) | `{ "short_url": "/{slug}" }`               |
-| GET    | `/{slug}`       | path slug             | HTTP redirect to original URL              |
-| GET    | `/stats/{slug}` | path slug             | `{ "target_url", "clicks", "created_at" }` |
+| Method | Path            | Query / Params        | Description                                         |
+| ------ | --------------- | --------------------- | --------------------------------------------------- |
+| POST   | `/shorten`      | `target_url` (string) | Generate a new slug and return `{ "short_url" }`    |
+| GET    | `/{slug}`       | Path param `slug`     | Redirect to original URL                            |
+| GET    | `/stats/{slug}` | Path param `slug`     | Return JSON with `{target_url, clicks, created_at}` |
 
-# Testing
+---
 
-Automated tests are written with **pytest** and **HTTPX**.
+## Testing
+
+Automated tests use **pytest** and **HTTPX**.
 
 1. **Run tests**
 
    ```bash
    pytest -q
    ```
-2. **Test coverage** (optional)
+2. **Coverage report** (optional)
 
    ```bash
    pip install pytest-cov
    pytest --cov=.
    ```
 
-**Code Style**:
 
-* Follow PEP8 guidelines
-* Use meaningful commit messages in imperative form (e.g., `fix: handle slug collision`)
+
 
