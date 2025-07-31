@@ -36,9 +36,9 @@ URL-Shortener/
 ├── database.py           # Database setup and connection
 ├── requirements.txt      # Python dependencies
 ├── .gitignore            # Ignored files and folders
-├── urls.db               # SQLite database (created at runtime)
 ├── tests/                # Automated tests
 │   └── test_api.py       # Test suite for API endpoints
+│   └── urls.db           # SQLite database (created at runtime)
 └── README.md             # Project documentation
 ```
 
@@ -46,7 +46,7 @@ URL-Shortener/
 
 ## Prerequisites
 
-* **Python** 3.9 or higher
+* **Python**
 * **pip** package manager
 * (Optional) **virtualenv** or **venv** for isolation
 
