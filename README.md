@@ -4,7 +4,7 @@ A minimal, production-ready URL shortening service built with **FastAPI** and **
 
 Long, unwieldy URLs can be a hassle to share, remember, or type. This service streamlines the process by converting lengthy links into short, human-friendly slugs and automatically redirecting users to the original address—while also tracking click counts for simple analytics
 
-# Features
+## Features
 
 * **Shorten URLs** via a RESTful endpoint
 * **Redirect** shortened slugs to their original URLs
@@ -13,7 +13,7 @@ Long, unwieldy URLs can be a hassle to share, remember, or type. This service st
 * **Automatic database migrations** with SQLModel
 * **Lightweight**: single-file SQLite database, no external dependencies
 
-# Tech Stack
+## Tech Stack
 
 * **Python**
 * **FastAPI**: high-performance ASGI web framework
@@ -21,7 +21,7 @@ Long, unwieldy URLs can be a hassle to share, remember, or type. This service st
 * **Uvicorn**: ASGI server for local development
 * **Pytest**, **HTTPX**: testing framework and HTTP client
 
-# Directory Structure
+## Directory Structure
 
 ```
 url-shortener-fastapi/
@@ -36,13 +36,13 @@ url-shortener-fastapi/
 └── README.md             # Project documentation (this file)
 ```
 
-# Prerequisites
+## Prerequisites
 
 * **Python**
 * **pip** package manager
 * (Optional) **virtualenv** or **venv** for isolation
 
-# Installation
+## Installation
 
 1. **Clone the repository**
 
@@ -65,7 +65,7 @@ url-shortener-fastapi/
    pip install -r requirements.txt
    ```
 
-# Configuration
+## Configuration
 
 By default, the service uses a local SQLite database `urls.db` in the project root. To change the database URL, modify the `DATABASE_URL` constant in **database.py**:
 
@@ -76,7 +76,7 @@ DATABASE_URL = "sqlite:///./urls.db"
 # DATABASE_URL = "postgresql://user:password@localhost/dbname"
 ```
 
-# Usage
+## Usage
 
 1. **Start the server**
 
@@ -105,7 +105,7 @@ DATABASE_URL = "sqlite:///./urls.db"
    # {"target_url": "https://example.com", "clicks": 1, "created_at": "2025-07-31T17:45:00.123456"}
    ```
 
-# API Reference
+## API Reference
 
 | Method | Path            | Query / Params        | Response                                   |
 | ------ | --------------- | --------------------- | ------------------------------------------ |
@@ -134,7 +134,7 @@ Automated tests are written with **pytest** and **HTTPX**.
 * Follow PEP8 guidelines
 * Use meaningful commit messages in imperative form (e.g., `fix: handle slug collision`)
 
-# Roadmap
+## Roadmap
 
 * Custom slug endpoint (`POST /custom`)
 * Redis caching for high-performance redirects
