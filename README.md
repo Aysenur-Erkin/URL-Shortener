@@ -35,7 +35,6 @@ URL-Shortener/
 ├── models.py             # URL data model definitions
 ├── database.py           # Database setup and connection
 ├── requirements.txt      # Python dependencies
-├── .gitignore            # Ignored files and folders
 ├── tests/                # Automated tests
 │   └── test_api.py       # Test suite for API endpoints
 │   └── urls.db           # SQLite database (created at runtime)
