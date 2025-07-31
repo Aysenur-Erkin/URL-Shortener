@@ -4,7 +4,7 @@ A minimal, production-ready URL shortening service built with **FastAPI** and **
 
 Long, unwieldy URLs can be a hassle to share, remember, or type. This service streamlines the process by converting lengthy links into short, human-friendly slugs and automatically redirecting users to the original address—while also tracking click counts for simple analytics
 
-## Features
+# Features
 
 * **Shorten URLs** via a RESTful endpoint
 * **Redirect** shortened slugs to their original URLs
@@ -13,7 +13,7 @@ Long, unwieldy URLs can be a hassle to share, remember, or type. This service st
 * **Automatic database migrations** with SQLModel
 * **Lightweight**: single-file SQLite database, no external dependencies
 
-## Tech Stack
+# Tech Stack
 
 * **Python**
 * **FastAPI**: high-performance ASGI web framework
