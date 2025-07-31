@@ -19,7 +19,7 @@ Long, unwieldy URLs can be a hassle to share, remember, or type. This service st
 
 ## Tech Stack
 
-* **Python** 3.9+
+* **Python**
 * **FastAPI**: high‑performance ASGI web framework
 * **SQLModel**: ORM for SQLite built on SQLAlchemy & Pydantic
 * **Uvicorn**: ASGI server for development
