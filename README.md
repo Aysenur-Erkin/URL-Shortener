@@ -134,11 +134,3 @@ Automated tests are written with **pytest** and **HTTPX**.
 * Follow PEP8 guidelines
 * Use meaningful commit messages in imperative form (e.g., `fix: handle slug collision`)
 
-## Roadmap
-
-* Custom slug endpoint (`POST /custom`)
-* Redis caching for high-performance redirects
-* Basic front-end with HTML form and JavaScript
-* Dockerfile for containerized deployment
-* CI/CD pipeline with GitHub Actions
-
