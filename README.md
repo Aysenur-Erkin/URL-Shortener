@@ -2,7 +2,7 @@
 
 A minimal, production-ready URL shortening service built with **FastAPI** and **SQLite**, featuring API documentation, click tracking, and easy deployment.
 
----
+Long, unwieldy URLs can be a hassle to share, remember, or type. This service streamlines the process by converting lengthy links into short, human-friendly slugs and automatically redirecting users to the original address—while also tracking click counts for simple analytics
 
 ## Features
 
@@ -15,7 +15,7 @@ A minimal, production-ready URL shortening service built with **FastAPI** and **
 
 ## Tech Stack
 
-* **Python** 3.9+
+* **Python**
 * **FastAPI**: high-performance ASGI web framework
 * **SQLModel**: ORM for SQLite based on SQLAlchemy and Pydantic
 * **Uvicorn**: ASGI server for local development
@@ -38,7 +38,7 @@ url-shortener-fastapi/
 
 ## Prerequisites
 
-* **Python** 3.9 or higher installed on your system
+* **Python**
 * **pip** package manager
 * (Optional) **virtualenv** or **venv** for isolation
 
@@ -47,7 +47,7 @@ url-shortener-fastapi/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your_username/url-shortener-fastapi.git
+   git clone https://github.com/Aysenur-Erkin/url-shortener-fastapi.git
    cd url-shortener-fastapi
    ```
 2. **Create and activate a virtual environment**
@@ -136,9 +136,9 @@ Automated tests are written with **pytest** and **HTTPX**.
 
 ## Roadmap
 
-* [ ] Custom slug endpoint (`POST /custom`)
-* [ ] Redis caching for high-performance redirects
-* [ ] Basic front-end with HTML form and JavaScript
-* [ ] Dockerfile for containerized deployment
-* [ ] CI/CD pipeline with GitHub Actions
+* Custom slug endpoint (`POST /custom`)
+* Redis caching for high-performance redirects
+* Basic front-end with HTML form and JavaScript
+* Dockerfile for containerized deployment
+* CI/CD pipeline with GitHub Actions
 
