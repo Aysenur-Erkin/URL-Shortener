@@ -47,8 +47,8 @@ url-shortener-fastapi/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Aysenur-Erkin/url-shortener-fastapi.git
-   cd url-shortener-fastapi
+   git clone https://github.com/Aysenur-Erkin/URL-Shortener.git
+   cd URL-Shortener
    ```
 2. **Create and activate a virtual environment**
 
